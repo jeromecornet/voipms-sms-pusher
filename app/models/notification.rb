@@ -24,7 +24,7 @@ class Notification < ApplicationRecord
       "collapse_key": "new_message",
       "delay_while_idle": false,
       "data": {
-        "message": "receive"
+        "ping": "time to fetch some messages"
       }
     }.to_json,
     GCM_HEADERS
