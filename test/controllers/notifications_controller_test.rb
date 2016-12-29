@@ -23,13 +23,13 @@ class NotificationsControllerTest < ActionDispatch::IntegrationTest
   test "#create fails when missing params" do
     assert_no_difference 'Notification.count' do
       post "/notification", params: { token: '1234', platform: 'android'}
-      assert_response :ok
+      assert_response :bad_request
       assert_equal 'missing params', JSON.parse(response.body)['status']
       post "/notification", params: { did: '6125551234', platform: 'android'}
-      assert_response :ok
+      assert_response :bad_request
       assert_equal 'missing params', JSON.parse(response.body)['status']
       post "/notification", params: { did: '6125551234', token: '1234' }
-      assert_response :ok
+      assert_response :bad_request
       assert_equal 'missing params', JSON.parse(response.body)['status']
     end
   end

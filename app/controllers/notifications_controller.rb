@@ -1,4 +1,5 @@
 class NotificationsController < ApplicationController
+  protect_from_forgery except: [:create, :show]
 
   def create
     reg = params.permit(:did, :token, :platform)
@@ -6,7 +7,7 @@ class NotificationsController < ApplicationController
       Notification.create_or_update(reg)
       render json: { status: 'ok' }
     else
-      render json: { status: 'missing params' }
+      render json: { status: 'missing params' }, status: :bad_request
     end
   end
 
