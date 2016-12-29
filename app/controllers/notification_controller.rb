@@ -10,7 +10,7 @@ class NotificationController < ApplicationController
     end
   end
 
-  def show
+  def index
     Notification.where(did: params[:did]).order(last_registered_at: :desc).each(&:send_notification)
     render text: 'ok'
   end
