@@ -14,10 +14,10 @@ class NotificationsController < ApplicationController
   def show
     reg = params.permit(:did)
     if reg[:did].present?
-      sent_notifications = Notification.where(did: reg[:did]).order(last_registered_at: :desc).map(&:send_notification)
       if reg[:did] == legacy_did
         Notification.legacy_notify(reg[:did])
       end
+      sent_notifications = Notification.where(did: reg[:did]).where("last_registered_at > ?", Time.now.utc - 1.month).order(last_registered_at: :desc).map(&:send_notification)
       render plain: 'ok'
     else
       render plain: 'no did specified'
