@@ -66,4 +66,11 @@ class NotificationsControllerTest < ActionDispatch::IntegrationTest
     assert_equal 'ok', response.body
   end
 
+  test "index sends a legacy notification" do
+    RestClient.expects(:get).once
+    NotificationsController.any_instance.expects(:legacy_did).returns('1234')
+    get "/notification", params: { did: '1234' }
+    assert_response :ok
+  end
+
 end

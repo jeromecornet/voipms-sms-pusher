@@ -15,7 +15,7 @@ class Notification < ApplicationRecord
   end
 
   def send_notification()
-    return unless platform == 'android'
+    return false unless platform == 'android'
 
     RestClient.post('https://gcm-http.googleapis.com/gcm/send',
     {
@@ -29,6 +29,10 @@ class Notification < ApplicationRecord
     }.to_json,
     GCM_HEADERS
     )
+    true
   end
 
+  def self.legacy_notify(did)
+    RestClient.get("http://voipmssms-kourlas.rhcloud.com/sms_callback?did=#{did}")
+  end
 end
