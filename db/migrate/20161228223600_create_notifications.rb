@@ -3,7 +3,7 @@ class CreateNotifications < ActiveRecord::Migration[5.0]
     create_table :notifications do |t|
       t.string :did
       t.text :token
-      t.last_registered_at :datetime
+      t.datetime :last_registered_at
       t.string :platform
 
       t.timestamps

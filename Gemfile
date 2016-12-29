@@ -7,11 +7,9 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.1'
-# Use postgresql as the database for Active Record
-gem 'pg', '~> 0.18'
+
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -39,9 +37,16 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'rest-client'
 
+# Use postgresql as the database for Active Record
+group :production do
+  gem 'pg', '~> 0.18'
+end
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  gem 'sqlite3'
+  gem 'mocha', :require => false
 end
 
 group :development do

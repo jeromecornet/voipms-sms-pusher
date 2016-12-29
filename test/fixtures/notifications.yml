@@ -1,9 +1,19 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+android:
+  did: '6135551234'
+  token: 'mytoken'
+  platform: 'android'
 
-one:
-  did: MyString
-  token: MyText
+iphone:
+  did: '6135559876'
+  token: 'some_token'
+  platform: 'ios'
 
-two:
-  did: MyString
-  token: MyText
+multi_reg_1:
+  did: '2222222222'
+  token: 'first_reg'
+  platform: 'android'
+
+multi_reg_2:
+  did: '2222222222'
+  token: 'second_reg'
+  platform: 'android'

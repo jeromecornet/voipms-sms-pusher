@@ -15,4 +15,9 @@
 
 # Ignore Byebug command history file.
 .byebug_history
+
+# Ignore environment
 .env
+
+# Ignore SQL Lite db
+db/*.sqlite3
